@@ -9,8 +9,5 @@ def test_get_entrance_fee():
         {"from": account},
     )
 
-    # print("Arsen debug")
-    # print(lottery_contract.getEntranceFee())
-    # print(Web3.toWei(0.018, "ether"))
     assert lottery_contract.getEntranceFee() > Web3.toWei(0.012, "ether")
     assert lottery_contract.getEntranceFee() < Web3.toWei(0.014, "ether")

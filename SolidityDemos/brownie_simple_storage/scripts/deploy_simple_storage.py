@@ -11,15 +11,15 @@ def deploy_simple_storage():
     # account = accounts.add(config["wallets"]["private_key"])
 
     # get bytecode and abi -> create nonce -> create the contract -> create the transaction -> sigh the transaction -> send the transaction
-    simple_storage_account = SimpleStorage.deploy({"from": account})
+    simple_storage_contract = SimpleStorage.deploy({"from": account})
 
     # do not need to add {"from": account} because it is a "view" method
-    print(simple_storage_account.getMyNumber())
+    print(simple_storage_contract.getMyNumber())
 
     # here we do a transaction, so we need to add {"from": account}
-    transaction = simple_storage_account.storeMyNumber(15, {"from": account})
+    transaction = simple_storage_contract.storeMyNumber(15, {"from": account})
     transaction.wait(1)  # how many blocks we want to wait
-    print(simple_storage_account.getMyNumber())
+    print(simple_storage_contract.getMyNumber())
 
 
 def read_simple_storage_contract():
